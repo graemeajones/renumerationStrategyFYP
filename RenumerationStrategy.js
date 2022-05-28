@@ -2,13 +2,17 @@ import Interface from './Interface.js';
 
 export const IRenumerationStrategy = new Interface("RenumerationStrategy", ['computeMonthlyPayment']);
 
+// Helpers
+const commaSeparatedTwoDecimalPlaces = (amount) => amount.toLocaleString('en', { minimumFractionDigits: 2 });
+
+// Strategies
 export class SalaryStrategy {
   constructor(paymentDetails) {
     this.salary = paymentDetails.salary;
   }
 
   computeMonthlyPayment() {
-    return (this.salary/12).toFixed(2);
+    return commaSeparatedTwoDecimalPlaces(this.salary/12);
   }
 }
 
@@ -19,7 +23,7 @@ export class HourlyStrategy {
   }
 
   computeMonthlyPayment() {
-    return (this.hourlyRate*this.numberOfHours).toFixed(2);
+    return commaSeparatedTwoDecimalPlaces(this.hourlyRate*this.numberOfHours);
   }
 }
 
@@ -29,6 +33,6 @@ export class ContractorStrategy {
   }
 
   computeMonthlyPayment() {
-    return (this.fixedMonthlyPayment).toFixed(2);
+    return commaSeparatedTwoDecimalPlaces(this.fixedMonthlyPayment);
   }
 }

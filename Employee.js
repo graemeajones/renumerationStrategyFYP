@@ -1,10 +1,8 @@
-import Interface from './Interface.js';
 import { IRenumerationStrategy } from './RenumerationStrategy.js';
-
 export default class Employee {
 
   constructor(name, renumerationStrategy) {
-    Interface.ensureImplements(renumerationStrategy,IRenumerationStrategy)
+    IRenumerationStrategy.implementedBy(renumerationStrategy)
     this.name = name;
     this.renumerationStrategy = renumerationStrategy;
   }
@@ -12,5 +10,4 @@ export default class Employee {
   recoverMonthlyPayment() {
     return this.renumerationStrategy.computeMonthlyPayment();
   }
-
 }
