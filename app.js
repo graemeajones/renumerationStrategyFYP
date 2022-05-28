@@ -1,10 +1,10 @@
 import Employee from './Employee.js';
 import { SalaryStrategy, HourlyStrategy, ContractorStrategy } from './RenumerationStrategy.js';
 
-const reportMonthlyPayment = (name, amount) => {
-  console.log(`Pay ${name} £${amount} this month.`);
-}
+// Helpers
+const reportMonthlyPayment = (name, amount) => console.log(`Pay ${name} £${amount} this month.`);
 
+// Different renumeration strategies
 const salaryDetails = { salary: 120000 };
 const employee1 = new Employee("Jane Smith", new SalaryStrategy(salaryDetails));
 reportMonthlyPayment(employee1.name, employee1.recoverMonthlyPayment());

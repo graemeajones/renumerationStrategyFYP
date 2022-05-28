@@ -1,4 +1,5 @@
 import { IRenumerationStrategy } from './RenumerationStrategy.js';
+
 export default class Employee {
 
   constructor(name, renumerationStrategy) {
