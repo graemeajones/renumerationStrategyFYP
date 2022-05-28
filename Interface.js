@@ -14,7 +14,20 @@ export default class Interface {
     }
   } // End of Constructor
 
-  // Static class method.
+  // Instance method for checking THIS interface
+  implementedBy(object) {
+    if (arguments.length < 1) {
+      throw new Error(`Interface ${this.name}.conforms() should have at least one argument.`);
+    }
+    for ( let method of this.methods ) {
+      if (!object[method] || typeof object[method] !== 'function') {
+        throw new Error(`Interface ${this.name}.conforms(): Method '${method}' of interface '${this.name}' not found.`);
+      }
+    }
+    return object; // Return input object to support chaining
+  } // End of implementedBy()
+
+  // Static class method for checking multiple interfaces 
   static ensureImplements(object) {
     if (arguments.length < 2) {
       throw new Error("Interface.ensureImplements should have at least two arguments.");
